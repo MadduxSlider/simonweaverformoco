@@ -260,6 +260,40 @@ nav ul a:hover { color: var(--white); }
 }
 
 /* ==========================================================
+   OUR DISTRICT
+   ========================================================== */
+.district { padding: 100px 0; background: var(--white); }
+.district-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 16px;
+}
+.district-map {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(11,29,58,0.1);
+  border: 1px solid rgba(27,77,142,0.1);
+}
+.district-map img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.district-text p {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+.district-text .map-credit {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* ==========================================================
    FOUR PILLARS
    ========================================================== */
 .pillars { padding: 100px 0; background: var(--cream); }
@@ -444,6 +478,7 @@ footer a:hover { color: var(--white); }
   .hero-buttons { justify-content: center; }
   .hero p { margin-left: auto; margin-right: auto; }
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .district-grid { grid-template-columns: 1fr; }
   .explainer-content { grid-template-columns: 1fr; }
   .pillars-grid { grid-template-columns: 1fr; }
   .community-photos { grid-template-columns: 1fr; }
@@ -474,6 +509,7 @@ footer a:hover { color: var(--white); }
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#committee">The Committee</a></li>
+      <li><a href="#district">Our District</a></li>
       <li><a href="#priorities">Priorities</a></li>
       <li><a href="#community">In the Community</a></li>
       <li><a href="#involved">Get Involved</a></li>
@@ -527,6 +563,24 @@ footer a:hover { color: var(--white); }
     <div class="explainer-content fade-up">
       <p>The Montgomery County Democratic Central Committee is the official governing body of the Democratic Party at the county level. Unlike the County Council, it is not a legislative body. It does not pass laws or set budgets. Instead, it shapes the direction and strength of the local party itself.</p>
       <p>Committee members help fill vacancies in elected office, support Democratic candidates up and down the ballot, organize voter registration drives, and build the infrastructure that keeps our party connected to the people it serves. It is foundational, often-overlooked work, and it matters enormously.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUR DISTRICT -->
+<section class="district" id="district">
+  <div class="container">
+    <div class="section-label">Our Community</div>
+    <h2 class="section-heading">Our District</h2>
+    <div class="district-grid fade-up">
+      <div class="district-map">
+        <img src="district19-map.jpg" alt="Map of Maryland Legislative District 19 in Montgomery County">
+      </div>
+      <div class="district-text">
+        <p>District 19 spans a wide swath of Montgomery County, covering communities including Aspen Hill, Glenmont, Wheaton, Kemp Mill, Four Corners, Leisure World, Layhill, Olney, Norbeck, Norwood, Derwood, Redland, and Shady Grove, among others.</p>
+        <p>It is one of the most vibrant and diverse areas in the state, home to longtime residents, new Americans, young families, and seniors. Our neighborhoods are connected by a shared commitment to strong schools, safe communities, and a better future for everyone who calls District 19 home.</p>
+        <p class="map-credit">Map source: Maryland Department of Planning, 2022 Legislative Districts</p>
+      </div>
     </div>
   </div>
 </section>
