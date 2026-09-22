@@ -311,6 +311,14 @@ nav ul a:hover { color: var(--white); }
 }
 .event-card p { color: var(--text-light); font-size: 0.98rem; }
 .event-card a.event-link { font-weight: 600; }
+.events-empty {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px 32px;
+  border: 1px dashed rgba(27,77,142,0.25);
+  color: var(--text-light);
+  font-size: 1rem;
+}
 .events-more {
   margin-top: 24px;
   color: var(--text-light);
@@ -779,8 +787,10 @@ footer .disclaimer { max-width: 620px; margin: 10px auto 0; line-height: 1.6; }
 
 <!-- UPCOMING EVENTS
      To add an event, copy one <div class="event-card"> ... </div> block,
-     paste it inside .events-list, and change the month, day, title, and text.
-     Delete events once they've passed. -->
+     paste it inside .events-list, and change the month, day, title, text,
+     and the data-date="YYYY-MM-DD" attribute. Events hide themselves
+     automatically the day after their data-date. -->
+<!-- For multi-day events, set data-date to the LAST day. -->
 <section class="events" id="events">
   <div class="container">
     <div class="section-label">Get Together</div>
@@ -788,7 +798,7 @@ footer .disclaimer { max-width: 620px; margin: 10px auto 0; line-height: 1.6; }
     <p class="section-intro">The best way to strengthen our party is to show up together. Here's where you can find me and fellow District 19 Democrats.</p>
     <div class="events-list">
 
-      <div class="event-card fade-up">
+      <div class="event-card fade-up" data-date="2026-10-08">
         <div class="event-date"><span class="month">Oct</span><span class="day">8</span></div>
         <div>
           <h3>MCDCC Fall Gala &amp; Volunteer Awards</h3>
@@ -796,7 +806,7 @@ footer .disclaimer { max-width: 620px; margin: 10px auto 0; line-height: 1.6; }
         </div>
       </div>
 
-      <div class="event-card fade-up">
+      <div class="event-card fade-up" data-date="2026-11-03">
         <div class="event-date"><span class="month">Nov</span><span class="day">3</span></div>
         <div>
           <h3>General Election Day</h3>
@@ -805,6 +815,7 @@ footer .disclaimer { max-width: 620px; margin: 10px auto 0; line-height: 1.6; }
       </div>
 
     </div>
+    <p class="events-empty" hidden>No events are scheduled right now. Check back soon, or see the countywide calendar below.</p>
     <p class="events-more">For the full calendar of countywide meetings and club events, visit the <a href="https://mcdcc.org/" target="_blank" rel="noopener">Montgomery County Democratic Party</a>.</p>
   </div>
 </section>
@@ -974,6 +985,24 @@ footer .disclaimer { max-width: 620px; margin: 10px auto 0; line-height: 1.6; }
          State Board of Elections if unsure. -->
   </div>
 </footer>
+
+<!-- HIDE PAST EVENTS -->
+<script>
+  (function () {
+    const now = new Date();
+    const today = now.getFullYear() + '-' +
+      String(now.getMonth() + 1).padStart(2, '0') + '-' +
+      String(now.getDate()).padStart(2, '0');
+    let remaining = 0;
+    document.querySelectorAll('.event-card[data-date]').forEach(card => {
+      if (card.dataset.date < today) { card.remove(); } else { remaining++; }
+    });
+    if (remaining === 0) {
+      const empty = document.querySelector('.events-empty');
+      if (empty) empty.hidden = false;
+    }
+  })();
+</script>
 
 <!-- SCROLL ANIMATION -->
 <script>
